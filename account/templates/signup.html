@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{% static 'css/signupstyle.css' %}">
+        <title>Sign up</title>
+        <!--background head-->
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <style>
+            @font-face { font-family: 'UhBeemysen'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff'); font-weight: normal; font-style: normal; }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <div class="out">
+                    <a href="{% url 'main' %}"><p id="main">GEPPETTO</p></a>
+                    <!-- <div class="search__container">
+                        <input class="search__input" type="text" placeholder="Search">
+                    </div> -->
+                    <nav id="nav">
+                        <ul class="nav_links">
+                            <li><a href="{% url 'main' %}" id="intro">소개</a></li>
+                            <li><a href="#" id="market">장터</a></li>
+                            <li><a href="{% url 'board' %}" id="board">게시판</a></li>
+                            <li><a href="#" id="edu">교육 신청</a></li>
+                        </ul>
+                        <ul class="nav_info">
+                            {% if user.is_active %}
+                            <a href="{% url 'logout'%}"><p>logout</p></a>
+                            <p>{{user.username}}</p>
+                            <a href=""><p>mypage</p></a>
+                            <!-- 로그아웃 하기 -->
+                            {% else %}
+                            <li><a href="{% url 'login'%}" id="login">로그인</a></li>
+                            <li><a href="{% url 'signup'%}" id="join">회원가입</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    <label for="menuicon" class="menu">
+                        <i class="xi-truck xi-2x"></i>
+                        <p id="pickup">수거요청</p>
+                    </label>
+                </div>
+            </header>
+            <div class="content">
+                <input type="checkbox" id="menuicon">
+                <label for="menuicon" class="background"></label>
+                <div class="sidebar">
+                    <div class="sidebar_content">
+                        <label for="menuicon"><i class="xi-close-thin xi-2x" id="exiticon"></i></label>
+            <div class="under">
+                <div class="main">
+                    <div class="box1"></div>
+                    <div class="signuptitle">
+                        <p class="su">회원가입</p>
+                        <img class="img3" src="{% static 'img/LogoFlower3.jpg' %}" width="35" height="40">
+                    </div>
+                    <form method="POST" action="{%url 'signup'%}" class="form1" align="center">
+                        {% csrf_token %}
+                        <!-- <input type="text" name="username"> -->
+                        <input class="mail" type="text" placeholder="아이디" name="userID" >
+                        <!-- <input type="password" name="password1"> -->
+                        <input class="pass1" type="password" placeholder="비밀번호" name="password1" >
+                        <!-- <input type="password" name="password2"> -->
+                        <input class="pass2" type="password" placeholder="비밀번호 확인" name="password2" required>
+                        <input class="first" type="text" placeholder="이름" name="name" required autofocus >
+                        <input class="add" type="text" placeholder="주소" name="address" required autofocus >
+                        <input class="tel" type="text" placeholder="전화번호" name="phone" required autofocus>
+                        <input class="submit" type="submit" value="sign up" align="center">
+                    </form>
+                </div>
+            </div>
+            <div class="bottom">
+            </div>
+        </div>    
+    </body>
+</html>
